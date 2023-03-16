@@ -20,7 +20,7 @@ class CommitlintPlugin implements Plugin<Project> {
         def util = CommitlintUtil.instance
         String msg = new File(System.getProperty("msgfile", ".git/COMMIT_EDITMSG")).text
         try {
-          util.validate(msg, extension.enforceRefs.getOrElse(false))
+          util.validate(msg)
         } catch (InvalidUserDataException e) {
           throw new InvalidUserDataException(util.addANSIColor(e.getMessage(), 31))
         }
