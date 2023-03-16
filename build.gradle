@@ -41,7 +41,7 @@ publishing {
 gradlePlugin {
     plugins { 
         commitlintPlugin { 
-            id = "fun.lykorisr.commitlint"
+            id = "com.github.NPUPigeonTeam.gradle-gitmoji-commitlint-plugin"
             displayName = "commitlint plugin"
             description = "Simple commitlint plugin for Gradle"
             implementationClass = "fun.lykorisr.commitlint.CommitlintPlugin"
