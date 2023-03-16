@@ -22,7 +22,7 @@ class CommitlintPlugin implements Plugin<Project> {
         try {
           util.validate(msg)
         } catch (InvalidUserDataException e) {
-          throw new InvalidUserDataException(util.addANSIColor(e.getMessage(), 31))
+          throw new InvalidUserDataException(e.getMessage())
         }
         println("commitlint finished successfully")
       }
