@@ -1,4 +1,4 @@
-package ru.netris.commitlint
+package fun.lykorisr.commitlint
 
 import org.gradle.api.InvalidUserDataException
 import java.util.regex.Pattern
@@ -14,15 +14,7 @@ class CommitlintUtil {
 
   static final Pattern RE_SEMVER = ~/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
   
-  static final List<Pattern> RE_TO_IGNORE = [
-    ~/(?s)^((Merge pull request)|(Merge (.*?) into (.*?)|(Merge branch (.*?)))(?:\r?\n)*$)/,
-    ~/(?s)^(R|r)evert (.*)/,
-    ~/(?s)^(fixup|squash)! (.*)/,
-    ~/(?s)^Merged (.*?)(in|into) (.*)/,
-    ~/(?s)^Merge remote-tracking branch (.*)/,
-    ~/(?s)^Automatic merge(.*)/,
-    ~/(?s)^Auto-merged (.*?) into (.*)/,
-  ];
+  static final List<Pattern> RE_TO_IGNORE = [];
   
   /**
    * ANSII-Colorize string
@@ -65,14 +57,14 @@ class CommitlintUtil {
    * @throws {InvalidUserDataException}
    */
   void validate(String msg, boolean enforceRefs) {
-    if (shouldBeIgnored(msg)) {
-      return
-    }
+//    if (shouldBeIgnored(msg)) {
+//      return
+//    }
     def lines = msg
       .split("\n")
       .findAll { !it.trim().startsWith("#") }
     
-    def re = /^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z ]+\))?!?: .+$/
+    def re = /^(?::\w*:|(?:(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])))\s(?<type>\w*)(?:\((?<scope>.*)\))?!?:\s(?<subject>(?:(?!#).)*(?:(?!\s).))(?:\s\(?(?<ticket>#\d*)\)?)?\u0024/
     if (!(lines[0] =~ re)) {
       throw new InvalidUserDataException(E_INVALID_TYPE)
     }

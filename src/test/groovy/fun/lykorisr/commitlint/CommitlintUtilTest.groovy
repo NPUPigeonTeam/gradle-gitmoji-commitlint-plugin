@@ -1,4 +1,4 @@
-package ru.netris.commitlint
+package fun.lykorisr.commitlint
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;

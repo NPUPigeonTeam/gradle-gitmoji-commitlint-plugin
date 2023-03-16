@@ -1,4 +1,4 @@
-package ru.netris.commitlint
+package fun.lykorisr.commitlint
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

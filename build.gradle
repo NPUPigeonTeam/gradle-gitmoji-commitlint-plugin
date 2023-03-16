@@ -21,7 +21,7 @@ repositories {
 publishing {
   publications {
     maven(MavenPublication) {
-      groupId = "ru.netris"
+      groupId = "fun.lykorisr"
       artifactId = "commitlint"
       version = "${project.version}"
 
@@ -30,7 +30,7 @@ publishing {
   }
   repositories {
     maven {
-      name = "netris"
+      name = "LykorisR"
       url = System.getenv("PUBLISH_URL")
       
       credentials(HttpHeaderCredentials) {
@@ -47,10 +47,10 @@ publishing {
 gradlePlugin {
     plugins { 
         commitlintPlugin { 
-            id = "ru.netris.commitlint"
+            id = "fun.lykorisr.commitlint"
             displayName = "commitlint plugin"
             description = "Simple commitlint plugin for Gradle"
-            implementationClass = "ru.netris.commitlint.CommitlintPlugin"
+            implementationClass = "fun.lykorisr.commitlint.CommitlintPlugin"
         }
     }
 }
